@@ -5,14 +5,14 @@ var options = {
 };
 
 var TRAFFIC_URL = 'https://rawgit.com/ksprashu/screenlapse/master/trafficmap_graphite.html';
-var INTERVAL = 60000;
+var INTERVAL = 20000;
 
-//grabScreen(TRAFFIC_URL, 'traffic01.png');
+grabScreen(TRAFFIC_URL, 'traffic01.png');
 
-setInterval(function () {
-  var filename = 'traffic_' + Date.now() + '.png';
-  grabScreen(TRAFFIC_URL, filename);
-}, INTERVAL);
+//setInterval(function () {
+//  var filename = 'traffic_' + Date.now() + '.png';
+//  grabScreen(TRAFFIC_URL, filename);
+//}, INTERVAL);
 
 function grabScreen (url, fileName) {
   webshot(url, fileName, options,
