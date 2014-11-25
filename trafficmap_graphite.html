@@ -53,8 +53,14 @@
 //          ]
         }];
 
+      var styledMap = new google.maps.StyledMapType(styles, {name: "Styled Map"});
+
       var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-      map.setOptions({styles: styles});
+
+      map.mapTypes.set('map_style', styledMap);
+      map.setMapTypeId('map_style');
+
+//      map.setOptions({styles: styles});
 
       var trafficLayer = new google.maps.TrafficLayer();
       trafficLayer.setMap(map);
