@@ -1,0 +1,30 @@
+{
+  "name": "screenlapse",
+  "version": "1.0.0",
+  "description": "Screenshots for Timelapse",
+  "main": "app.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ksprashu/screenlapse.git"
+  },
+  "keywords": [
+    "screenshot",
+    "timelapse"
+  ],
+  "author": "Prashanth K S",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ksprashu/screenlapse/issues"
+  },
+  "homepage": "https://github.com/ksprashu/screenlapse",
+  "engines": {
+    "node": "0.10.x"
+  },
+  "dependencies": {
+    "webshot": "^0.15.3"
+  }
+}
