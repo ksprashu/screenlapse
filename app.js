@@ -1,4 +1,5 @@
 var webshot = require('webshot');
+var path = require('path');
 
 var options = {
   renderDelay: 10000,
