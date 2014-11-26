@@ -1,3 +1,4 @@
+var http = require('http');
 var webshot = require('webshot');
 var path = require('path');
 //var mkdirp = require('mkdirp');
@@ -27,3 +28,7 @@ setInterval(function () {
       console.log(fileName + ' ...saved!');
     });
 }, INTERVAL);
+
+http.createServer(function (req, res) {
+  console.log('not serving any requests today!');
+}).listen(process.env.PORT || 5000);
