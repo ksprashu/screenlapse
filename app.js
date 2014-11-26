@@ -3,10 +3,12 @@ var path = require('path');
 
 var options = {
   renderDelay: 10000,
-  phantomPath : path.join(__dirname, 'vendor/phantomjs/bin/phantomjs')
+  timeout: 20000,
+  //phantomPath : path.join(__dirname, 'vendor/phantomjs/bin/phantomjs')
 };
 
-var URL = "https://cryptic-headland-4007.herokuapp.com/trafficmap_graphite.html";
+var URL = "http://cryptic-headland-4007.herokuapp.com/trafficmap_graphite.html";
+URL = "google.com"
 var INTERVAL = 10000;
 
 setInterval(function () {
