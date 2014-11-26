@@ -6,8 +6,8 @@ var options = {
   phantomPath : path.join(__dirname, 'vendor/phantomjs/bin/phantomjs')
 };
 
-//var TRAFFIC_URL = 'https://cdn.rawgit.com/ksprashu/screenlapse/master/trafficmap_graphite.html';
-var TRAFFIC_URL = 'http://localhost:8000/trafficmap_graphite.html';
+var TRAFFIC_URL = 'https://cdn.rawgit.com/ksprashu/screenlapse/master/trafficmap_graphite.html';
+//var TRAFFIC_URL = 'http://localhost:8000/trafficmap_graphite.html';
 var INTERVAL = 60000;
 
 //grabScreen(TRAFFIC_URL, 'traffic01.png');
