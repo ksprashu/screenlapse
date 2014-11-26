@@ -1,21 +1,24 @@
 var webshot = require('webshot');
 var path = require('path');
 
+var express = require('express')
+var app = express();
+
 var options = {
   renderDelay: 10000,
   phantomPath : path.join(__dirname, 'vendor/phantomjs/bin/phantomjs')
 };
 
-var TRAFFIC_URL = 'https://cdn.rawgit.com/ksprashu/screenlapse/master/trafficmap_graphite.html';
-//var TRAFFIC_URL = 'http://localhost:8000/trafficmap_graphite.html';
-var INTERVAL = 60000;
+//var TRAFFIC_URL = 'https://cdn.rawgit.com/ksprashu/screenlapse/master/trafficmap_graphite.html';
+var TRAFFIC_URL = 'public/trafficmap_graphite.html';
+var INTERVAL = 10000;
 
-//grabScreen(TRAFFIC_URL, 'traffic01.png');
-
-setInterval(function () {
-  var filename = 'traffic_' + Date.now() + '.png';
-  grabScreen(TRAFFIC_URL, filename);
-}, INTERVAL);
+function screenLapse () {
+  setInterval(function () {
+    var filename = 'traffic_' + Date.now() + '.png';
+    grabScreen(TRAFFIC_URL, filename);
+  }, INTERVAL);
+}
 
 function grabScreen (url, fileName) {
   console.log('starting...');
@@ -26,6 +29,17 @@ function grabScreen (url, fileName) {
     });
 }
 
+app.set('port', (process.env.PORT || 5000));
+app.use(express.static(__dirname + '/public'));
 
+app.get('/', function(request, response) {
+  response.send('Hello World!')
+});
 
+app.listen(app.get('port'), function() {
+  console.log("Node app is running at localhost:" + app.get('port'));
 
+  console.log("Starting screenlapse...");
+  //grabScreen(TRAFFIC_URL, 'traffic01.png');
+  //screenLapse();
+});

@@ -2,6 +2,7 @@
   "name": "screenlapse",
   "version": "1.0.0",
   "description": "Screenshots for Timelapse",
+  "main": "app.js",
   "scripts": {
     "start": "node app.js"
   },
@@ -23,6 +24,7 @@
     "node": "0.10.x"
   },
   "dependencies": {
+    "express": "^4.10.4",
     "webshot": "^0.15.3"
   }
 }
