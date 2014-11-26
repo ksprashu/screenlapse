@@ -24,7 +24,6 @@
     "node": "0.10.x"
   },
   "dependencies": {
-    "express": "^4.10.4",
     "webshot": "^0.15.3"
   }
 }
