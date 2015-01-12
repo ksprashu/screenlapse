@@ -78,7 +78,7 @@ var options = {
 };
 
 var URL = "https://limitless-brushlands-6948.herokuapp.com/trafficmap_graphite.html";
-var INTERVAL = 10000;
+var INTERVAL = 30000;
 
 var moment = require('moment');
 
