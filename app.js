@@ -77,7 +77,7 @@ var options = {
   phantomPath: path.join(__dirname, 'vendor/phantomjs/bin/phantomjs')
 };
 
-var URL = "https://limitless-brushlands-6948.herokuapp.com/trafficmap_graphite.html";
+var URL = "http://cryptic-headland-4007.herokuapp.com/trafficmap_graphite.html";
 var INTERVAL = 30000;
 
 var moment = require('moment');
