@@ -7,12 +7,30 @@ var Dropbox = require('dropbox');
 var isAuthenticated = false;
 var client;
 
+
+var options = {
+  //streamType: 'png',
+  renderDelay: 10000,
+  //timeout: 5000,
+  phantomPath: path.join(__dirname, 'vendor/phantomjs/bin/phantomjs')
+};
+
+var boxapp = {
+  key: 'kgjf2o30gx84z0o',
+  secret: 'ghfz9vobw03wo3g',
+  token: 'ORJ9RUVuXEwAAAAAAAADJ94YcEAN4-pXEwAG1gOnWzGXKH9AMNZNHbuKyHago-W4',
+  sandbox: false
+}
+
+var URL = "http://cryptic-headland-4007.herokuapp.com/trafficmap_graphite.html";
+var INTERVAL = 60000;
+
 var prepareDropbox = function() {
   client = new Dropbox.Client({
-    key: "kgjf2o30gx84z0o",
-    secret: "ghfz9vobw03wo3g",
-    token: "ORJ9RUVuXEwAAAAAAAADJ94YcEAN4-pXEwAG1gOnWzGXKH9AMNZNHbuKyHago-W4",
-    sandbox: false
+    key: boxapp.key,
+    secret: boxapp.secret,
+    token: boxapp.token,
+    sandbox: boxapp.sandbox
   });
 
   client.authenticate(function(error, client) {
@@ -70,15 +88,6 @@ var showError = function(error) {
   }
 };
 
-var options = {
-  //streamType: 'png',
-  //renderDelay: 5000,
-  //timeout: 5000,
-  phantomPath: path.join(__dirname, 'vendor/phantomjs/bin/phantomjs')
-};
-
-var URL = "http://cryptic-headland-4007.herokuapp.com/trafficmap_graphite.html";
-var INTERVAL = 30000;
 
 var moment = require('moment');
 
@@ -102,7 +111,7 @@ var prepareDirectory = function () {
 };
 
 var captureScreenShot = function () {
-  var fileName = dir + '/graphite_traffic_' + moment() + '.png';
+  var fileName = dir + '/graphite_traffic_' + moment().format('YYYYMMDD') + '.png';
 
   webshot(URL, options, function (err, renderStream) {
     if (err) console.log(err);
