@@ -111,7 +111,7 @@ var prepareDirectory = function () {
 };
 
 var captureScreenShot = function () {
-  var fileName = dir + '/graphite_traffic_' + moment().format('YYYYMMDD') + '.png';
+  var fileName = dir + '/graphite_traffic_' + moment().format('YYYYMMDD_HHmmss') + '.png';
 
   webshot(URL, options, function (err, renderStream) {
     if (err) console.log(err);
