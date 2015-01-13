@@ -3,10 +3,13 @@ var webshot = require('webshot');
 var path = require('path');
 var fs = require('fs');
 var Dropbox = require('dropbox');
+var moment = require('moment');
 
-var isAuthenticated = false;
-var client;
+var dir = "tmp";
+var time;
 
+var URL = "http://cryptic-headland-4007.herokuapp.com/trafficmap_graphite.html";
+var INTERVAL = 60000;
 
 var options = {
   //streamType: 'png',
@@ -15,15 +18,15 @@ var options = {
   phantomPath: path.join(__dirname, 'vendor/phantomjs/bin/phantomjs')
 };
 
+var isAuthenticated = false;
+var client;
+
 var boxapp = {
   key: 'kgjf2o30gx84z0o',
   secret: 'ghfz9vobw03wo3g',
   token: 'ORJ9RUVuXEwAAAAAAAADJ94YcEAN4-pXEwAG1gOnWzGXKH9AMNZNHbuKyHago-W4',
   sandbox: false
 }
-
-var URL = "http://cryptic-headland-4007.herokuapp.com/trafficmap_graphite.html";
-var INTERVAL = 60000;
 
 var prepareDropbox = function() {
   client = new Dropbox.Client({
@@ -88,18 +91,13 @@ var showError = function(error) {
   }
 };
 
-
-var moment = require('moment');
-
-var dir = "tmp";
-
 var prepareDirectory = function () {
-  var d = moment.utc();
-  dir = d.format('YYYY-MM-');
-  if (d.hour() >= 21 && d.minute() >= 30)
-    dir = dir + (d.date() + 1);
+  time = moment.utc().add({hours:5,minutes:30});
+  dir = time.format('YYYY-MM-');
+  if (time.hour() < 3)
+    dir = dir + (time.date() - 1);
   else
-    dir = dir + d.date();
+    dir = dir + time.date();
 
   //fs.exists(dir, function(exists) {
   //  if (!exists) {
@@ -111,7 +109,7 @@ var prepareDirectory = function () {
 };
 
 var captureScreenShot = function () {
-  var fileName = dir + '/graphite_traffic_' + moment().format('YYYYMMDD_HHmmss') + '.png';
+  var fileName = dir + '/graphite_traffic_' + time.format('YYYYMMDD_HHmmss') + '.png';
 
   webshot(URL, options, function (err, renderStream) {
     if (err) console.log(err);
@@ -127,12 +125,12 @@ var captureScreenShot = function () {
     renderStream.on('end', function () {
       console.log("Screenlapse: " + fileName + ' ...downloaded!');
 
-      client.writeFile(fileName, Buffer.concat(fileData), function (error, stat) {
-        if (error)
-          console.log("Dropbox: error writing file with status -> " + error.status);
-        else
-          console.log("DropBox: " + fileName + ' ...written!');
-      });
+      //client.writeFile(fileName, Buffer.concat(fileData), function (error, stat) {
+      //  if (error)
+      //    console.log("Dropbox: error writing file with status -> " + error.status);
+      //  else
+      //    console.log("DropBox: " + fileName + ' ...written!');
+      //});
 
       fileData = [];
     });

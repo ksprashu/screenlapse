@@ -28,6 +28,7 @@
     "fs": "0.0.2",
     "mkdirp": "^0.5.0",
     "moment": "^2.9.0",
+    "moment-timezone": "^0.2.5",
     "webshot": "^0.15.3"
   }
 }
