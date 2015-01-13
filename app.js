@@ -125,12 +125,12 @@ var captureScreenShot = function () {
     renderStream.on('end', function () {
       console.log("Screenlapse: " + fileName + ' ...downloaded!');
 
-      //client.writeFile(fileName, Buffer.concat(fileData), function (error, stat) {
-      //  if (error)
-      //    console.log("Dropbox: error writing file with status -> " + error.status);
-      //  else
-      //    console.log("DropBox: " + fileName + ' ...written!');
-      //});
+      client.writeFile(fileName, Buffer.concat(fileData), function (error, stat) {
+        if (error)
+          console.log("Dropbox: error writing file with status -> " + error.status);
+        else
+          console.log("DropBox: " + fileName + ' ...written!');
+      });
 
       fileData = [];
     });
