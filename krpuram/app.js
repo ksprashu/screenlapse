@@ -26,7 +26,7 @@ var boxapp = {
   secret: 'ghfz9vobw03wo3g',
   token: 'ORJ9RUVuXEwAAAAAAAADJ94YcEAN4-pXEwAG1gOnWzGXKH9AMNZNHbuKyHago-W4',
   sandbox: false
-}
+};
 
 var prepareDropbox = function() {
   client = new Dropbox.Client({
