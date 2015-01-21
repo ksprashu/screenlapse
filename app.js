@@ -13,6 +13,7 @@ var INTERVAL = 60000;
 
 var options = {
   //streamType: 'png',
+  windowSize: { width: 1440, height: 900 },
   renderDelay: 10000,
   //timeout: 5000,
   phantomPath: path.join(__dirname, 'vendor/phantomjs/bin/phantomjs')

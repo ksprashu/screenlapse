@@ -13,6 +13,7 @@ var INTERVAL = 30000;
 
 var options = {
   //streamType: 'png',
+  windowSize: { width: 1440, height: 900 },
   renderDelay: 10000,
   //timeout: 5000,
   phantomPath: path.join(__dirname, 'vendor/phantomjs/bin/phantomjs')
@@ -93,7 +94,7 @@ var showError = function(error) {
 
 var prepareDirectory = function () {
   time = moment.utc().add({hours:5,minutes:30});
-  dir = dir + '_' + time.format('YYYY-MM-');
+  dir = "krpuram" + '_' + time.format('YYYY-MM-');
   if (time.hour() < 3)
     dir = dir + (time.date() - 1);
   else
