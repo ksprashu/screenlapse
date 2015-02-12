@@ -5,7 +5,7 @@ var fs = require('fs');
 var Dropbox = require('dropbox');
 var moment = require('moment');
 
-var dir = "ginger";
+var dir = "psn";
 var time;
 
 var URL = "http://cryptic-headland-4007.herokuapp.com/trafficmap_ginger.html";
@@ -58,7 +58,7 @@ var prepareDropbox = function() {
 };
 
 var showError = function(error) {
-    console.log('Dropbox: Error with status = ' + error.status);
+  console.log('Dropbox: Error with status = ' + error.status);
 };
 
 var prepareDirectory = function () {
