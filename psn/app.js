@@ -5,7 +5,8 @@ var fs = require('fs');
 var Dropbox = require('dropbox');
 var moment = require('moment');
 
-var dir = "psn";
+var location = "psn";
+var dir = location;
 var time;
 
 var URL = "http://cryptic-headland-4007.herokuapp.com/trafficmap_ginger.html";
@@ -63,7 +64,7 @@ var showError = function(error) {
 
 var prepareDirectory = function () {
   time = moment.utc().add({hours:5,minutes:30});
-  dir = dir + '_' + time.format('YYYY-MM-');
+  dir = location + '_' + time.format('YYYY-MM-');
   if (time.hour() < 3)
     dir = dir + (time.date() - 1);
   else
