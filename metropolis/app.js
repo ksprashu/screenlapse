@@ -5,11 +5,11 @@ var fs = require('fs');
 var Dropbox = require('dropbox');
 var moment = require('moment');
 
-var location = "psn";
+var location = "metropolis";
 var dir = location;
 var time;
 
-var URL = "http://cryptic-headland-4007.herokuapp.com/trafficmap_psn.html";
+var URL = "http://cryptic-headland-4007.herokuapp.com/trafficmap_metropolis.html";
 var INTERVAL = 30000;
 
 var START_HOUR = "07";
